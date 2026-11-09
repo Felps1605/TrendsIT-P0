@@ -18,6 +18,7 @@ def request(prompt: str, entrada: str, detalhes: bool ) -> str | GenerateContent
         model = model,
         contents = f"{prompt} {entrada}"
         )
+    
     if not detalhes:
         return resposta.text 
     return resposta
