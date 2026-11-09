@@ -2,7 +2,8 @@ import os
 from dotenv import load_dotenv
 from google import genai
 
-def request(prompt, entrada):
+def request(prompt: str, entrada: str, detalhes: bool ) -> str | GenerateContentResponse:
+    
     load_dotenv()
 
     api_key = os.getenv("GENAI_API_KEY")
@@ -17,5 +18,6 @@ def request(prompt, entrada):
         model = model,
         contents = f"{prompt} {entrada}"
         )
-
-    return resposta.text 
+    if not detalhes:
+        return resposta.text 
+    return resposta
